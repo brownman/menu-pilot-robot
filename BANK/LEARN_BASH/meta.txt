@@ -1,0 +1,2 @@
+text: learning bash
+column: script

@@ -1,0 +1,18 @@
+local   dir_next_menu=$dir_self/$str
+  
+# ls -dl $dir_next_menu 
+local file_next_menu=$dir_next_menu/menu.sh
+  
+str=$( eval    $file_next_menu )
+res=$?
+
+#    local dir_self=`dirname $0`
+
+#source $dir_self/helper.cfg
+#    local file_list=$dir_self/list.txt
+i
+#    echo "[str] $str"
+#    if [ -n "$str" ];then
+#        run_dir "$dir_self/BANK/$str"
+#    fi
+
