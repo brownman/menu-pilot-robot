@@ -15,4 +15,30 @@ i
 #    if [ -n "$str" ];then
 #        run_dir "$dir_self/BANK/$str"
 #    fi
+local dir=$1
+local str_meta=`cat $dir/meta.txt`
+echo "[str_meta] $str_meta"
+
+#"[FILE_EXTRACT] $file_extract"
+#
+#"[step1] go to the directory and run "
+#"[step2] extract"
+#"[step3] try dir: ]]   $dir_self"
+
+            #step    menu_generate_file_list
+#            assert file_exist list.txt
+
+
+            #print_color 32 "[str_choose] $str_choose"
+            #sleep 1
+            #dir_next="$dir_self/BANK/$str_choose"
+          # echo extract_next $dir_next
+
+set_env(){
+    #update to a full path
+    export dir_self="$path"
+    print_color  33 "[ROBOT] I am in directory: " 
+    echo "$dir_self"
+}
+
 

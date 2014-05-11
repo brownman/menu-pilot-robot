@@ -1,0 +1,4 @@
+text:advance bash scripting
+column: script name
+type: script
+handler: gvim
