@@ -3,6 +3,17 @@ set -o nounset
 path=${1:-$PWD}
 #trace echo "[path] $path"
 pushd "$path" >/dev/null
+
+
+dereference(){
+print_color 31 1>&2 "dereference got $1"
+ local    var_content_may_not_exist=$1
+    #$1"
+  local   pointer='var_content_may_not_exist'
+    local str=$( eval  "echo  \$$pointer")
+    notify-send "content" "$str"
+    echo "$str"
+}
 trace(){
     echo "$@" >>/tmp/trace
 }
@@ -10,8 +21,10 @@ ensure_tag_exist(){
     local tag_name="$1"
     echo "[tag_name] $tag_name"
     #    echo "[handler] $handler"
-
-    if [ "$tag_name" ];then
+    local str_res="$( dereference $tag_name)"
+#$tag_name`
+echo "[$tag_name ] content: $str_res"
+    if [  -n "$str_res" ];then
         print_color 32 "[tag exist] $tag_name"
         #        eval " echo \"[tag content] \$$tag_name\""
     else
@@ -31,7 +44,8 @@ menu_present(){
         local str=$( eval "$cmd" )
         echo "$str"
     else
-        echo "[error] file not exist: " "$file_list"
+        echo "[error] file-list : " "$file_list"
+        echo file without content
     fi
 }
 
@@ -67,6 +81,7 @@ sourcing(){
 #}
 
 parse_meta(){
+    clear
     local    file_meta=$1
     local item1=''
     local item2=''
@@ -77,13 +92,14 @@ parse_meta(){
             item2=$( remove_trailing "$item2" )
             if [ -n "$item1" ] && [ -n "$item2" ];then
                 cmd="export ${item1}=\"${item2}\""
-                echo "[parse_meta] $cmd"
+                print_color 35   "[parse_meta] $cmd"
                 eval "$cmd"
             fi
         done <$file_meta
     fi
 
     ensure_tag_exist hanlder
+    ensure_tag_exist listing
 }
 
 
@@ -126,27 +142,30 @@ steps(){
     local dir_next=$path/BANK
     print_color 32  step1
     ensure_file_exist $file_meta
-    ensure_file_exist $file_list
     ensure_dir_exist $dir_next
     print_color 32 step2
     parse_meta $file_meta
+    if [ ! -f $file_list ];then
+        eval "$listing"
+    fi
+    ensure_file_exist $file_list
     print_color 32 step3
     pick_from_menu
 }
 handle_dir(){
     local dir=$1
     extract_next_dir "$dir"
- }
+}
 handle_file(){
     local file=$1
-$handler "$file"
+    $handler "$file"
 }
 
 
 handle_the_truth(){
     local str="$1"
-local item=$path/BANK/$str
-print_color 31 "[item] $item"
+    local item=$path/BANK/$str
+    print_color 31 "[item] $item"
     if  [ -f $item ];then
         handle_file "$item"
     elif [ -d $item ];then
