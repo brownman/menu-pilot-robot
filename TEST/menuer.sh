@@ -1,1 +1,0 @@
-../MENUER/menuer.sh

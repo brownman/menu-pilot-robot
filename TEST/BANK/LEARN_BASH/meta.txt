@@ -1,3 +1,0 @@
-text: learning bash
-column: script
-handler: another_menu

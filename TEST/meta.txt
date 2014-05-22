@@ -1,3 +1,0 @@
-text: sub-dirs
-column: dirs
-handler: another_menu
