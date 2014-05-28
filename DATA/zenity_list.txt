@@ -1,0 +1,35 @@
+zenity --help-list
+Usage:
+  zenity [OPTION...]
+
+List options
+  --list                                            Display list dialog
+  --text=TEXT                                       Set the dialog text
+  --column=COLUMN                                   Set the column header
+  --checklist                                       Use check boxes for first column
+  --radiolist                                       Use radio buttons for first column
+  --separator=SEPARATOR                             Set output separator character
+  --multiple                                        Allow multiple rows to be selected
+  --editable                                        Allow changes to text
+  --print-column=NUMBER                             Print a specific column (Default is 1. 'ALL' can be used to print all columns)
+  --hide-column=NUMBER                              Hide a specific column
+  --hide-header                                     Hides the column headers
+
+3$ : dao04@localhost:~/JAIL/TREE/.BANK/MY/BUILTIN/BANK/MODULES/BANK/MENU_PILOT_ROBOT/TEST$ zenity --help-list | grep select
+  --multiple                                        Allow multiple rows to be selected
+3$ : dao04@localhost:~/JAIL/TREE/.BANK/MY/BUILTIN/BANK/MODULES/BANK/MENU_PILOT_ROBOT/TEST$ zenity --help-list 
+Usage:
+  zenity [OPTION...]
+
+List options
+  --list                                            Display list dialog
+  --text=TEXT                                       Set the dialog text
+  --column=COLUMN                                   Set the column header
+  --checklist                                       Use check boxes for first column
+  --radiolist                                       Use radio buttons for first column
+  --separator=SEPARATOR                             Set output separator character
+  --multiple                                        Allow multiple rows to be selected
+  --editable                                        Allow changes to text
+  --print-column=NUMBER                             Print a specific column (Default is 1. 'ALL' can be used to print all columns)
+  --hide-column=NUMBER                              Hide a specific column
+  --hide-header                                     Hides the column headers

@@ -1,0 +1,20 @@
+$ python
+Python 2.7.1+ (r271:86832, Sep 27 2012, 21:16:52) 
+[GCC 4.5.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> print os.popen("echo $0").read()
+sh
+>>> import subprocess
+>>> print subprocess.call("echo $0", shell=True).read()
+/bin/sh
+>>> print subprocess.Popen("echo $0", stdout=subprocess.PIPE, shell=True).stdout.read()
+/bin/sh
+>>> print subprocess.Popen("echo $0", stdout=subprocess.PIPE, shell=True, executable="/bin/bash").stdout.read()
+/bin/bash
+>>> print subprocess.Popen("cat <(echo TEST)", stdout=subprocess.PIPE, shell=True).stdout.read()
+/bin/sh: Syntax error: "(" unexpected
+>>> print subprocess.Popen("cat <(echo TEST)", stdout=subprocess.PIPE, shell=True, executable="/bin/bash").stdout.read()
+TEST
+Hope this helps someone,
+Cheers!
